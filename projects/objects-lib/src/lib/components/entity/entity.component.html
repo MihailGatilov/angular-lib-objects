@@ -1,0 +1,40 @@
+<div *ngIf="form; else loading">
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <h1 style="margin: 0 auto; text-align: center"> Редактирование записи</h1>
+    <div class="form-control" [ngClass]="{invalid: form.get('name')?.touched && form.get('name')?.invalid}"
+    >
+      <label for="name">Название места:</label>
+      <input id="name" type="email" formControlName="name">
+      <div *ngIf="form.get('name')?.touched && form.get('name')?.invalid"
+        class="validation"
+      >
+        <small *ngIf="form.get('name')?.errors?.required">
+          Введите поле название места
+        </small>
+      </div>
+    </div>
+
+    <div class="form-control" [ngClass]="{invalid: form.get('population')?.touched && form.get('population')?.invalid}"
+    >
+      <label for="population">Население:</label>
+      <input id="population" type="email" formControlName="population">
+      <div *ngIf="form.get('population')?.touched && form.get('population')?.invalid"
+           class="validation"
+      >
+        <small *ngIf="form.get('population')?.errors?.required">
+          Введите число
+        </small>
+      </div>
+    </div>
+
+    <button
+      class="btn btn-primary"
+      type="submit"
+      [disabled]="form?.invalid || submitted"
+    >Обновить</button>
+  </form>
+</div>
+
+<ng-template #loading>
+  <p class="text-center">Идет загрузка...</p>
+</ng-template>

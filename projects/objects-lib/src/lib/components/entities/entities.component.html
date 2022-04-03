@@ -1,0 +1,44 @@
+<div *ngIf="entities.length; else loading">
+<!--  *ngIf="posts.length; else loading"-->
+  <div class="form-control">
+    <input type="text" placeholder="Найти объект..." [(ngModel)]="searchStr">
+<!--    [(ngModel)]="searchStr"-->
+  </div>
+  <table>
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>Название города</th>
+      <th>Население</th>
+      <th>Дата обновления данных</th>
+      <th>Действие</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let entity of entities | searchObjects:searchStr ">
+<!--      *ngFor="let post of posts | searchPosts:searchStr; let idx = index"-->
+<!--      <td>{{ idx + 1 }}</td>-->
+<!--      <td>{{ post.author }}</td>-->
+<!--      <td>{{ post.title }}</td>-->
+<!--      <td>{{ post.date | date:'medium':null:'ru' }}</td>-->
+      <td>{{entity.id}}</td>
+      <td>{{entity.name}}</td>
+      <td>{{entity.population}}</td>
+      <td>{{entity.createdAt | date:'medium':'ru'}}</td>
+      <td>
+        <button
+          class="btn btn-link open"
+          [routerLink]="['/entities', entity.id,'entity']"
+          >
+          Открыть
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<ng-template #loading>
+  <p class="text-center">Идет загрузка...</p>
+</ng-template>

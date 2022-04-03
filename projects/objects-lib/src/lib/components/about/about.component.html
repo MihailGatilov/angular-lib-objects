@@ -1,0 +1,11 @@
+<h1 style="margin: 0 auto; text-align: center">О Приложении</h1>
+<div class="about-task">
+    <p style="font-size: 24px;">Техническое задание на разработку данного приложения</p>
+    <div style="display: flex;">
+      <p style="padding: 10px;"><a [routerLink]="['/about', 'extra']" >Показать задание</a></p>
+      <p style="padding: 10px;"><a [routerLink]="['/about']" >Спрятать задание</a></p>
+    </div>
+    <router-outlet></router-outlet>
+</div>
+
+
